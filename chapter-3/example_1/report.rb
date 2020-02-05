@@ -5,36 +5,47 @@ class Report
     @text = ['Things are going', 'really, really well.']
   end
 
-  def output(format)
-    if format == :plain
-      puts "*** #{@title} ***" 
-    elsif format == :html
-      puts "<html>"
-      puts "\t<head>"
-      puts "\t\t<title>#{@title}</title>"
-      puts "\t<head>"
-      puts "\t<body>"
-    else
-      raise "Unknown format: #{format}"
-    end
+  def output
+    start
+    head
+    body_start
+    body
+    body_end
+    output_end
+  end
 
-    @text.each do |line|
-      if format == :plain
-        puts line
-      else
-        puts "\t\t<p>#{line}</p>"
-      end
-    end 
-    
-    if format == :html
-      puts "\t</body>"
-      puts "</html>"
-    end
+  def start
+    raise 'Called abstract method: start'
+  end
+
+  def head
+    raise 'Called abstract method: head'
+  end
+
+  def body_start
+    raise 'Called abstract method: body_start'
+  end
+
+  def body
+    @text.each { |line| print_line(line)}
+  end
+
+  def body_end
+    raise 'Called abstract method: body_end'
+  end
+
+  def output_end
+    raise 'Called abstract method: output_end'
+  end
+
+  def print_line
+    raise 'Called abstract method: print_line'
   end
 
 end
 
 report = Report.new
-report.output(:plain)
-report.output(:html)
-report.output(:csv)
+report.output
+#report.output(:plain)
+#report.output(:html)
+#report.output(:csv)
