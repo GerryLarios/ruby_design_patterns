@@ -43,9 +43,3 @@ class Report
   end
 
 end
-
-report = Report.new
-report.output
-#report.output(:plain)
-#report.output(:html)
-#report.output(:csv)
