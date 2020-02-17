@@ -3,7 +3,7 @@ module Subject
     @observers = []
   end
 
-  def add(observer)
+  def add(&observer)
     @observers << observer
   end
 
@@ -12,7 +12,7 @@ module Subject
   end
 
   def notify
-    @observers.each { |observer| observer.update(self) }
+    @observers.each { |observer| observer.call(self) }
   end
 end
 
