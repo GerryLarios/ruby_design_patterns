@@ -1,6 +1,6 @@
 require_relative 'formatter'
 
-class HTMLFormatter < Formatter
+class HTMLFormatter
   def output(context)
     title = context.title
     text = context.text
