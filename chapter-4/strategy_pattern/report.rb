@@ -10,7 +10,7 @@ class Report
   end
 
   def output
-    @formatter.output(@title, @text)
+    @formatter.output(self)
   end
 
 end

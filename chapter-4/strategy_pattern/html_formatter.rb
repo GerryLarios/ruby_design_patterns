@@ -1,8 +1,9 @@
 require_relative 'formatter'
 
 class HTMLFormatter < Formatter
-  
-  def output(title, text)
+  def output(context)
+    title = context.title
+    text = context.text
     puts '<html>'
     puts "\t<head>"
     puts "\t\t<title>#{title}</title>"
@@ -12,5 +13,4 @@ class HTMLFormatter < Formatter
     puts "\t</body>"
     puts '</html>'
   end
-
 end
