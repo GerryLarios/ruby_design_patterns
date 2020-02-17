@@ -1,4 +1,4 @@
-class Subject
+module Subject
   def initialize
     @observers = []
   end
@@ -15,3 +15,4 @@ class Subject
     @observers.each { |observer| observer.update(self) }
   end
 end
+
