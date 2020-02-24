@@ -5,9 +5,21 @@ class Composite < Task
     super name
     @sub_tasks = []
   end
-  
+
   def add_sub_task task
     @sub_tasks << task
+  end
+
+  def << task
+    @sub_tasks << task
+  end
+
+  def [] index
+    @sub_tasks[index]
+  end
+
+  def []= index, new_task
+    @sub_tasks[index] = new_task
   end
 
   def remove_sub_task task
