@@ -1,6 +1,8 @@
 require_relative 'manufacture_cake'
 
-puts Manufacture.new.get_time_required
+manufacture = Manufacture.new
+puts "total time required = #{manufacture.get_time_required}"
+puts "total basic tasks = #{manufacture.get_total_tasks}"
 
 require_relative 'composite'
 require_relative 'task'
