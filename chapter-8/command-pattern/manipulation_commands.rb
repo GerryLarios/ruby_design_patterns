@@ -13,6 +13,10 @@ class CreateFile < Command
     file.write @contents
     file.close
   end
+
+  def unexecute
+    file.delete @path
+  end
 end
 
 class DeleteFile < Command
@@ -22,8 +26,24 @@ class DeleteFile < Command
   end
 
   def execute
+    backup
     File.delete(@path)
   end
+
+  def unexecute
+    if @contents
+      file = File.open(@path, 'w')
+      file.write @contents
+      file.close
+    end
+  end
+
+  private
+
+  def backup
+    @contents = File.read(@path) if File.exists? @path
+  end
+
 end
 
 class CopyFile < Command
@@ -36,5 +56,11 @@ class CopyFile < Command
   def execute
     FileUtils.copy(@source, @target)
   end
+  
+  def unexecute
+    File.delete(@target)
+  end
 end
+
+
 
